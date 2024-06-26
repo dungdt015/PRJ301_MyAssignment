@@ -26,6 +26,7 @@ public class CourseDBContext extends DBContext<Course>{
                     + "INNER JOIN subjects sub ON sub.subid = c.subid\n"
                     + "WHERE s.active = 1 AND c.lid = ?";
             stm= connection.prepareStatement(sql);
+            stm.setInt(1, lid);
             ResultSet rs = stm.executeQuery();
             while(rs.next()) {
                 Course c = new Course();
